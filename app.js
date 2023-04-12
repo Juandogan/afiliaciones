@@ -1,16 +1,19 @@
 'use stritc'
 const cors = require('cors')
+const path = require('path')
 const bodyParser = require ('body-parser');
 const { mongoose } = require('./baseMongo'); //mongodb
 var express = require('express');
+
 var app = express();
    
 
 //MIDDLEWARE
 app.use(express.json())
-app.use('/',express.static('client', {redirect:false}));
+app.use('/',express.static('client/frontend', {redirect:false}));
 app.use(cors());
 app.use(bodyParser.json({limit: '200mb'}));
+const path = require ('path')
 app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
 app.get('*', function(req, res, next){res.sendFile(path.resolve('client/frontend/index.html'))}); 
 const { application } = require('express');
