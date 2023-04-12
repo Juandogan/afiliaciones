@@ -1,6 +1,5 @@
 'use stritc'
 const cors = require('cors')
-const path = require('path')
 const bodyParser = require ('body-parser');
 const { mongoose } = require('./baseMongo'); //mongodb
 var express = require('express');
@@ -15,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json({limit: '200mb'}));
 const path = require ('path')
 app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
+app.use('/usuarios', require('./routes/usuarios'))
 app.get('*', function(req, res, next){res.sendFile(path.resolve('client/frontend/index.html'))}); 
 const { application } = require('express');
 var port  = process.env.PORT || 3100;
@@ -24,7 +24,7 @@ console.log('Servidor corriendo ', port);});
  
 // app.use('/sql', require('./routes/crudSql'))
 // app.use('/data', require('./routes/crudMongo'))
-app.use('/usuarios', require('./routes/usuarios'))
+
  
 
 module.exports = app; 

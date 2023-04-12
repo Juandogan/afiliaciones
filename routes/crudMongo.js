@@ -9,6 +9,7 @@ const router = Router()
                  //verifyToken
 router.get('/' ,  async (req, res)=>{ 
     const data = await data.find();
+    console.log('pego un get')
         res.json(data);
 });
 
