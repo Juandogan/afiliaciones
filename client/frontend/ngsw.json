@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1681332072066,
+  "timestamp": 1681332766729,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.d242733494d2f122.js",
+        "/main.855668b7515c2561.js",
         "/manifest.webmanifest",
         "/polyfills.1a4a779d95e3f377.js",
         "/runtime.aaedba49815d2ab0.js",
@@ -77,8 +77,8 @@
     "/assets/noto_volleyball3.png": "f2fc176bdd6c9258a34e2709a29c12c657b54a60",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/fondogrande.c0a43039f981baa5.png": "7a3bae620136659b10d4f7fbffa698f8ae03beec",
-    "/index.html": "30cc91341ee9564c676085da5b47080bbec9430a",
-    "/main.d242733494d2f122.js": "41227d2d55b945675907ade0fb44d65c99bc0f4e",
+    "/index.html": "fbbb10a208413af2a969fadc899e1ad9a8b57de6",
+    "/main.855668b7515c2561.js": "a24a85194c5aa20033b0f609b02b5f3259e50643",
     "/manifest.webmanifest": "63b272452f7323ec09705c84044faa394ce82a79",
     "/noto.fe02d5bfcb6707c9.png": "42914e3d66ad22d1bbf77826e05e93fd6db825bc",
     "/polyfills.1a4a779d95e3f377.js": "47efbfddf5005a9847f02b21016418121dc97751",
