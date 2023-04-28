@@ -39,10 +39,9 @@ const enviarPush = (req, res) => {
   const pushSubscription = {
     
     endpoint:'https://fcm.googleapis.com/fcm/send/fL11xfVuDho:APA91bGlLxKcTpBUwT1BAGZnaeJvLQ-7c16Lq7qHmdSUhQ11JgzqsfeECTtgnbcPCfrcJ3CVYAEU3AC81C3X6-7UgFQhvT_DUxHzJbD2CYW327MU7xVOGjZkobBdkw26A0eyxeQHAxg7',
-    expirationTime: null,
-    keys: {
-      auth: 'FkUP9nzsV-u3CHElytjw5w',
-      p256dh: 'BBBEOH0EXnPtygf5TGv23FoDGmS-96WnYjDOXYYnBxAbmSLPCbx6HDK4Hu44gKrq8ZgKU-oJBNo42JdbCSjv9wo'
+     keys: {
+     auth: 'FkUP9nzsV-u3CHElytjw5w',
+     p256dh: 'BBBEOH0EXnPtygf5TGv23FoDGmS-96WnYjDOXYYnBxAbmSLPCbx6HDK4Hu44gKrq8ZgKU-oJBNo42JdbCSjv9wo'
     }
   };
 
