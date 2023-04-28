@@ -27,8 +27,6 @@ const createTrans = () => {
 const sendMail = async (user) => {
 
   const token = jwt.sign({ _id: user._id, role: user.role }, 'secretKey')
-  console.log(token, 'testing')
-
   const transporter = createTrans()
   const info = await transporter.sendMail({
     from: '"FEVA" <foo@example.com>', // sender address
@@ -42,7 +40,12 @@ const sendMail = async (user) => {
   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   return
 }
+
+
 exports.sendMail = (user) => sendMail(user)
+
+
+
 
 
 

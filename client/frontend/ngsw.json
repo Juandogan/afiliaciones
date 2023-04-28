@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1681332766729,
+  "timestamp": 1682642776408,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.855668b7515c2561.js",
+        "/main.75b42908029ba7ad.js",
         "/manifest.webmanifest",
         "/polyfills.1a4a779d95e3f377.js",
         "/runtime.aaedba49815d2ab0.js",
@@ -29,6 +29,7 @@
         "ignoreVary": true
       },
       "urls": [
+        "/assets/123.jfif",
         "/assets/Untitled.jpg",
         "/assets/Untitled.png",
         "/assets/fondo.png",
@@ -56,6 +57,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/assets/123.jfif": "f6dd9b825bfe29fab11712afa62ef95c560c170e",
     "/assets/Untitled.jpg": "edb7983494c35baeb33897c704db86c5ffb3993b",
     "/assets/Untitled.png": "f6d287baf1c79da76c361ab1e1295d2267caedcb",
     "/assets/fondo.png": "14e4b494744ec87a7a79481d6bd38abd414b8e17",
@@ -77,8 +79,8 @@
     "/assets/noto_volleyball3.png": "f2fc176bdd6c9258a34e2709a29c12c657b54a60",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/fondogrande.c0a43039f981baa5.png": "7a3bae620136659b10d4f7fbffa698f8ae03beec",
-    "/index.html": "fbbb10a208413af2a969fadc899e1ad9a8b57de6",
-    "/main.855668b7515c2561.js": "a24a85194c5aa20033b0f609b02b5f3259e50643",
+    "/index.html": "90b2a9571536f9f374af6f9e18b29329192e8ab0",
+    "/main.75b42908029ba7ad.js": "d365713cd1fb72600b712078cdce0dd0cb2d45bb",
     "/manifest.webmanifest": "63b272452f7323ec09705c84044faa394ce82a79",
     "/noto.fe02d5bfcb6707c9.png": "42914e3d66ad22d1bbf77826e05e93fd6db825bc",
     "/polyfills.1a4a779d95e3f377.js": "47efbfddf5005a9847f02b21016418121dc97751",

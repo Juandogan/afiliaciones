@@ -41,7 +41,6 @@ router.post('/signup' , async (req, res)=>{
   const checkUser = await User.findOne({email})
 
  if (checkUser) {
-  console.log('usuarios ya existe')
   return res.status(400).send('Usuario ya existe');
  }
 
