@@ -34,7 +34,7 @@ const sendMailrec = async (user) => {
       to: `${user.email}`, // list of receivers
       subject: `Recuperacion de tu cuenta FEVA`, // Subject line
       text: "Hello world?", // plain text body          http:///ingresar
-      html: `ingrese al siguiente link para recuperar su contraseña: <a href="http://localhost:4200/recuperarForm/${token}">Recuperar contraseña </a>` // html body
+      html: `ingrese al siguiente link para recuperar su contraseña: <a href="http://66.97.44.139/recuperarForm/${token}">Recuperar contraseña </a>` // html body
     })
   
     console.log("Message sent: %s", info.messageId);
