@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1683234482723,
+  "timestamp": 1683236069875,
   "index": "/feva/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/feva/favicon.ico",
         "/feva/index.html",
-        "/feva/main.1aa6c902773d0f03.js",
+        "/feva/main.d07947249675ed3c.js",
         "/feva/manifest.webmanifest",
         "/feva/polyfills.1a4a779d95e3f377.js",
         "/feva/runtime.1eef65174679b3b8.js",
@@ -40,6 +40,7 @@
         "/feva/assets/Untitled.jpg",
         "/feva/assets/Untitled.png",
         "/feva/assets/aaaaateste.jpg",
+        "/feva/assets/avatar.png",
         "/feva/assets/descarga.jfif",
         "/feva/assets/fondo.png",
         "/feva/assets/fondogrande.png",
@@ -80,6 +81,7 @@
     "/feva/assets/Untitled.jpg": "edb7983494c35baeb33897c704db86c5ffb3993b",
     "/feva/assets/Untitled.png": "f6d287baf1c79da76c361ab1e1295d2267caedcb",
     "/feva/assets/aaaaateste.jpg": "06a6d3321f85061dc1d436f1b0aa1546db95e67e",
+    "/feva/assets/avatar.png": "b84ba64c7e15d212f1ae3c23a9ebd63dcd6e11a3",
     "/feva/assets/descarga.jfif": "49da76837357ddca2c043b498bebd4829f843b25",
     "/feva/assets/fondo.png": "14e4b494744ec87a7a79481d6bd38abd414b8e17",
     "/feva/assets/fondogrande.png": "7a3bae620136659b10d4f7fbffa698f8ae03beec",
@@ -103,8 +105,8 @@
     "/feva/assets/voley.jfif": "bcd360bb5b781f47eeeec1b0c6e972bdbeca0a41",
     "/feva/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/feva/fondogrande.c0a43039f981baa5.png": "7a3bae620136659b10d4f7fbffa698f8ae03beec",
-    "/feva/index.html": "fd4ddbacf4d6ae7b192a5caf7e93c15a16b481ce",
-    "/feva/main.1aa6c902773d0f03.js": "106c74da29f98767389c48ec320b658d5ce4dc10",
+    "/feva/index.html": "cd42fbca8a07001fc4993b614e0a57111a525c72",
+    "/feva/main.d07947249675ed3c.js": "1b7fb77df1bb7cf9aec79b284bf90d3871375b23",
     "/feva/manifest.webmanifest": "63b272452f7323ec09705c84044faa394ce82a79",
     "/feva/noto.fe02d5bfcb6707c9.png": "42914e3d66ad22d1bbf77826e05e93fd6db825bc",
     "/feva/polyfills.1a4a779d95e3f377.js": "47efbfddf5005a9847f02b21016418121dc97751",
