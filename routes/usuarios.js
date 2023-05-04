@@ -3,9 +3,73 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 const router = Router()
 const emailer = require('../controllers/mails')
+const data = require('../models/notificacionModel');
 //
+
+router.get('/notificaciones/' , async(req, res)=> {
+  const notificaciones = await data.find(); 
+    res.json(notificaciones);
+});
+
+
+
+
+router.post('/notificaciones/' , async (req, res)=>{    
+  console.log(req.body)
+  const notificaciones = new data({
+   
+   imagen:req.body.imagen,
+   categoria:req.body.categoria,
+   titulo:req.body.titulo,
+   subtitulo:req.body.subtitulo,
+   cuerpo:req.body.cuerpo,
+   vistas:req.body.vistas,           
+
+ });
+    await notificaciones.save();
+    res.json('Articulo creado!');
+ })
+ 
+
+ router.get('/notificaciones/:_id' , async(req,res) => { 
+
+  try {
+      const notificacion = await data.findById(req.params._id)    
+            res.json(notificacion)               
+    } catch (err) {
+      res.json('ID no encontrado..')
+    }
+
+});
+
+router.delete('/notificaciones/:_id', async (req,res) => {
+  const { _id } = req.params;
+    await data.findByIdAndDelete(_id);
+      res.json("Eliminado!");
+});
+
+
+router.put('/notificaciones/:_id', async (req,res) => {
+  const { _id } = req.params;
+  const notificacion = {         
+    imagen:req.body.imagen,
+    categoria:req.body.categoria,
+    titulo:req.body.titulo,
+    subtitulo:req.body.subtitulo,
+    cuerpo:req.body.cuerpo,
+    vistas:req.body.vistas,     
+   
+              };
+  
+     await data.findByIdAndUpdate(_id, {$set: notificacion}, {new: true});
+     res.json('Articulo modificado!');
+
+});
+
+
+
 //verifyToken  usuar luego de la ruta para veriicar usuarios
-router.get('/' ,verifyToken, async(req, res)=> {
+router.get('/usuarios/' ,verifyToken, async(req, res)=> {
 
   const usuarios = await User.find(); 
     res.json(usuarios);
@@ -13,7 +77,7 @@ router.get('/' ,verifyToken, async(req, res)=> {
 });
 
  
-router.get('/:_id' , async(req,res) => { 
+router.get('/usuarios/:_id' , async(req,res) => { 
     console.log(req.params._id)
     try {
         const user = await User.findById(req.params._id)    
@@ -27,7 +91,7 @@ router.get('/:_id' , async(req,res) => {
 
     
 
-router.delete('/:_id', async (req,res) => {
+router.delete('/usuarios/:_id', async (req,res) => {
     const { _id } = req.params;
       await User.findByIdAndDelete(_id);
         res.json("Eliminado!");
@@ -35,7 +99,7 @@ router.delete('/:_id', async (req,res) => {
 
 
 
-router.post('/signup' , async (req, res)=>{    
+router.post('/usuarios/signup' , async (req, res)=>{    
  const { email, password, role, nombre } = req.body
 
   const checkUser = await User.findOne({email})
@@ -52,7 +116,7 @@ router.post('/signup' , async (req, res)=>{
 })
 
 
-router.post('/signin', async (req,res)=>{
+router.post('/usuarios/signin', async (req,res)=>{
 const {email, password} = req.body;
 const user = await User.findOne({email});
  
@@ -71,7 +135,7 @@ return res.json(token)
 
 
 
-router.put('/:_id', async (req,res) => {
+router.put('/usuarios/:_id', async (req,res) => {
     const { _id } = req.params;
     const articulo = { 
                 email:req.body.email,
