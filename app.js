@@ -15,7 +15,7 @@ app.use(bodyParser.json({limit: '200mb'}))
 const path = require ('path')
 app.use(bodyParser.urlencoded({limit: '200mb', extended: true}))
 app.use('/',express.static('client/frontend', {redirect:false}))
-
+app.use('/notificaciones', require('./routes/crudMongo'))
 app.use('/usuarios', require('./routes/usuarios'))
 app.use('/recuperar', require ('./routes/recuperar'))
 
@@ -66,7 +66,7 @@ const enviarPush = (req, res) => {
 
  
 app.route('/enviar').post(enviarPush);
-
+app.use
 
 
 app.get('*', function(req, res, next){res.sendFile(path.resolve('client/frontend/index.html'))}); 
