@@ -16,7 +16,7 @@ const path = require ('path')
 app.use(bodyParser.urlencoded({limit: '200mb', extended: true}))
 app.use('/feva',express.static('client/frontend', {redirect:false}))
 app.use('/notificaciones', require('./routes/crudMongo'))
-app.use('/usuarios', require('./routes/usuarios'))
+app.use('/feva', require('./routes/usuarios'))
 app.use('/recuperar', require ('./routes/recuperar'))
 
 webpush.setVapidDetails(
