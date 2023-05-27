@@ -4,6 +4,7 @@ const User = require('../models/userModel')
 const router = Router()
 const emailer = require('../controllers/mails')
 const data = require('../models/notificacionModel');
+const emailerRec = require('../controllers/mailsrec')
 //
 
 router.get('/notificaciones/' , async(req, res)=> {
@@ -11,8 +12,27 @@ router.get('/notificaciones/' , async(req, res)=> {
     res.json(notificaciones);
 });
 
+// testeando
+router.get('/recuperar/:_id' , async(req,res) => { 
+  try { 
+console.log(req.params._id)
+      const data = await User.findOne({email:(req.params._id)})    
+      if(!data){
+        return res.status(400).send('errorUsuario');
+      }
+
+      emailerRec.sendMailrec(data)
+      return res.json({"msj":"mail enviado"})
 
 
+                 
+    } catch (err) {
+   return res.status(400).send('Error de conexion');
+    }   
+
+}); 
+
+// testeando
 
 router.post('/notificaciones/' , async (req, res)=>{    
   console.log(req.body)

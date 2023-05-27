@@ -15,7 +15,7 @@ const createTrans = () => {
     secure: true,
     auth: {
       user: "juandogan@gmail.com",
-      pass: "szxclektgeujkrph"
+      pass: "zkdfodnqvtiijvzx"
     }
 
 
@@ -33,7 +33,7 @@ const sendMail = async (user) => {
     to: `${user.email}`, // list of receivers
     subject: `Activación de tu cuenta en FEVA!`, // Subject line
     text: "Hello world?", // plain text body          http:///ingresar
-    html: `ingrese al siguiente link para activar tu cuenta: <a href="http://66.97.44.139/emailCheck/${token}"> Activar Cuenta</a>` // html body
+    html: `ingrese al siguiente link para activar tu cuenta: <a href="http://66.97.44.139/feva/emailCheck/${token}"> Activar Cuenta</a>` // html body
   })
 
   console.log("Message sent: %s", info.messageId);
