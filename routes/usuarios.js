@@ -118,27 +118,13 @@ router.get('/notificaciones/' , async(req, res)=> {
 // testeando
 router.get('/recuperar/:_id' , async(req,res) => { 
   try { 
-      const data = await User.findById(req.params._id)    
+console.log(req.params._id)
+      const data = await User.findOne({email:(req.params._id)})    
       if(!data){
         return res.status(400).send('errorUsuario');
       }
 
-             const { _id } = req.params;
-          const notificacion = {         
-          nombre:req.body.nombre,
-          email:req.body.email,
-          password:req.body.password,
-          subtitulo:req.body.subtitulo,
-          verficada:req.body.verificada,
-          vistas:req.body.vistas,     
-          tokenPush:req.body.tokenPush
-         
-                 };
-        
-           await data.findByIdAndUpdate(_id, {$set: notificacion}, {new: true});
-           res.json('Articulo modificado!');     
-      
-
+      emailerRec.sendMailrec(data)
       return res.json({"msj":"mail enviado"})
 
 
@@ -151,13 +137,17 @@ router.get('/recuperar/:_id' , async(req,res) => {
 
 router.put('/recuperar/:_id' , async(req,res) => { 
   try { 
-console.log(req.params._id)
-      const data = await User.findOne({_id:(req.params._id)})    
-      if(!data){
-        return res.status(400).send('errorUsuario');
-      }
-
-   
+      const { _id } = req.params;
+      const notificacion = {         
+        nombre:req.body.nombre,
+        email:req.body.email,
+        password:req.body.password,
+        verificada:req.body.verificada,
+        tokenPush:req.body.tokenPush,              
+                  };
+      
+         await data.findByIdAndUpdate(_id, {$set: notificacion}, {new: true});
+         res.json('Articulo modificado!');
                  
     } catch (err) {
    return res.status(400).send('Error de conexion');
