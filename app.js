@@ -4,8 +4,10 @@ const bodyParser = require ('body-parser');
 const { mongoose } = require('./baseMongo'); //mongodb
 let webpush = require('web-push')
 var express = require('express');
-
+const User = require('./models/userModel')
 var app = express();
+
+
    
 
 //MIDDLEWARE
@@ -19,56 +21,94 @@ app.use('/feva',express.static('client/frontend', {redirect:false}))
 app.use('/feva', require('./routes/usuarios'))
 //app.use('/feva/recuperar', require ('./routes/recuperar'))
 
+// {"publicKey":"BMdnZijmRyNbEvQbkVdfAhwzWhFIgHqGJZlfnAIiCev_fFtsuwlKGP_1nTfr_rG-idgjK-QolsZkmw6cuzM_Kvo","privateKey":"5Jdr3pE-gc6sBzgMGzmMcdmuNAUnK0J4QvoZWxqreJA"}
 
-webpush.setVapidDetails(
-    
-    'mailto:test@example.com',
-    'BPNaYZfqzUVzLm2Of4v4EJEc2lnsOOg0q3sRcOtlpHjxrYPj241j179upeTUnaxAx-6ORKojlX_nYK-sgGEF-Wg',
-    'n2GM0DnvpfoeNFGMkauaNr4j8OVZYZ3Qoh4eY9K_5DU'
+const vapidKeys = {
+  "subject": "mailto: <juandogan@gmail.com>",
+  "publicKey": "BMiSLRLCfg7i7-uO0AJ7IZwN0BJi5ow5I3qvBrfJg7pAR_FohLmJV-Jv5aEAzRPRabYVM70yDW63uAFAuyQdaTY",
+  "privateKey": "U_tDWAh1rXIFO0-uAq2tkIWWTconSSOIeLmFJklMz_M"
+};
+
+
+webpush.setVapidDetails(    
+    vapidKeys.subject,
+     vapidKeys.publicKey,
+     vapidKeys.privateKey
 );
 
 
-const options = {
-    vapidDetails: {
-      subject: 'mailto:test@example.com',
-      publicKey: 'BPNaYZfqzUVzLm2Of4v4EJEc2lnsOOg0q3sRcOtlpHjxrYPj241j179upeTUnaxAx-6ORKojlX_nYK-sgGEF-Wg',
-      privateKey:   'n2GM0DnvpfoeNFGMkauaNr4j8OVZYZ3Qoh4eY9K_5DU'
-    }
+
+
+const enviarPush = async (req, res) => {
+        
+  const allSubscriptions = await User.distinct('tokenPush')
+          console.log(allSubscriptions)
+           res.json(allSubscriptions)
+
+
+  console.log('Total subscriptions', allSubscriptions.length);
+
+  const notificationPayload = {
+      "notification": {
+          "title": "Angular News",
+          "body": "Newsletter Available!",
+          "icon": "assets/main-page-logo-small-hat.png",
+          "vibrate": [100, 50, 100],
+          "data": {
+              "dateOfArrival": Date.now(),
+              "primaryKey": 1
+          },
+          "actions": [{
+              "action": "explore",
+              "title": "Go to the site"
+          }]
+      }
   };
 
-const enviarPush = (req, res) => {
-  const pushSubscription = {
-    
-    endpoint:'https://fcm.googleapis.com/fcm/send/fL11xfVuDho:APA91bGlLxKcTpBUwT1BAGZnaeJvLQ-7c16Lq7qHmdSUhQ11JgzqsfeECTtgnbcPCfrcJ3CVYAEU3AC81C3X6-7UgFQhvT_DUxHzJbD2CYW327MU7xVOGjZkobBdkw26A0eyxeQHAxg7',
-     keys: {
-     auth: 'FkUP9nzsV-u3CHElytjw5w',
-     p256dh: 'BBBEOH0EXnPtygf5TGv23FoDGmS-96WnYjDOXYYnBxAbmSLPCbx6HDK4Hu44gKrq8ZgKU-oJBNo42JdbCSjv9wo'
+  Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
+      sub, JSON.stringify(notificationPayload) )))
+      .then(() => 
+      // res.status(200).json({message: 'Newsletter sent successfully.'})     
+      console.log('salio')
+      )
+      .catch(err => {
+          // console.error("Error sending notification, reason: ", err);
+          // res.sendStatus(500);
+          console.log('salio')
+      });
     }
-  };
 
-  let payload = JSON.stringify({
-    "notification": {
-      "title": "FEVA",
-      "body": "Nueva notificacion",
-      "icon": "http://192.168.48.132:4200/assets/icon-blanco.png"
-    }
-  });
+//   const pushSubscription = {
+//     "endpoint": "https://fcm.googleapis.com/fcm/send/d2clykHVgxQ:APA91bFnOhUcmCBUotuHtx1ZDMRRA7jSgPXgixQBWGhf4R5NxRXVv8RaCAjb07lP6qjF8_8hhuJRllKirYSF38xyPWeB6NqD1Lq5MZyQUJfPK-sP0fw1pEA2GkSmZu_JFUo1y2rF9A2T",
+//     "expirationTime": null,
+//     "keys": {
+//         "p256dh": "BDluRQgjZQqbijUedWlbeMnUSPRwtpBJtA1yzPXWx3g8nu7Wum_yr6NYL0SYNBSoMqTYEHO2OUZ2LZCX2ytjJdc",
+//         "auth": "R5Ujj1XbO2gQjKJJAXplyw"
+//     }
+// }
 
-  webpush.sendNotification(pushSubscription, JSON.stringify(payload),options)
-    .then(res => {
-      console.log('Enviado:', res)
-      res.send('enviado')
-    })
-    .catch(err => {
-      console.log('Error:', err)
-      res.send(err)
-    });
-};  
+//   let payload = JSON.stringify({
+//     "notification": {
+//       "title": "FEVA",
+//       "body": "Nueva notificacion",
+ 
+//     }
+//   });
+
+//   webpush.sendNotification(pushSubscription, payload)
+//     .then(res => {
+//       console.log('Enviado:')
+//       return res
+//     })
+//     .catch(err => {
+//       console.log('Error:', err)
+//       return res
+//     });
+// };  
 
  
 app.route('/enviar').post(enviarPush);
-app.use
-
+ 
 
 app.get('*', function(req, res, next){res.sendFile(path.resolve('client/frontend/index.html'))}); 
 const { application } = require('express');

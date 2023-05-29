@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
@@ -5,8 +6,8 @@ const userSchema = new Schema({
     email: String,
     password: String,        
     verificada:String,
-    role:String
-    
+    role:String,
+    tokenPush:{}    
 },
 {timestamps: true}
 )

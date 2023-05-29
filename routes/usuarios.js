@@ -5,6 +5,21 @@ const router = Router()
 const emailer = require('../controllers/mails')
 const data = require('../models/notificacionModel');
 const emailerRec = require('../controllers/mailsrec')
+// guardar TOKEN PUSH
+
+router.put('/guardar/:_id', async (req,res) => {
+  const { _id } = req.params;
+  const articulo = { 
+  
+              tokenPush:req.body
+
+            };                
+       await User.findByIdAndUpdate(_id, {$set: articulo}, {new: true});
+       res.json('Articulo Creado!');
+
+      })
+
+
 //
 
 router.get('/notificaciones/' , async(req, res)=> {
@@ -155,13 +170,10 @@ return res.json(token)
 
 
 
-router.put('/usuarios/:_id', async (req,res) => {
+router.put('/validar/:_id', async (req,res) => {
     const { _id } = req.params;
     const articulo = { 
-                email:req.body.email,
-                password:req.body.password, 
-                role:req.body.role,
-                nombre:req.body.nombre,
+          
                 verificada:req.body.verificada
 
               };
