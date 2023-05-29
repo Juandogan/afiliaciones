@@ -5,6 +5,66 @@ const router = Router()
 const emailer = require('../controllers/mails')
 const data = require('../models/notificacionModel');
 const emailerRec = require('../controllers/mailsrec')
+let webpush = require('web-push')
+
+// enviar PUSH
+const vapidKeys = {
+  "subject": "mailto: <juandogan@gmail.com>",
+  "publicKey": "BMiSLRLCfg7i7-uO0AJ7IZwN0BJi5ow5I3qvBrfJg7pAR_FohLmJV-Jv5aEAzRPRabYVM70yDW63uAFAuyQdaTY",
+  "privateKey": "U_tDWAh1rXIFO0-uAq2tkIWWTconSSOIeLmFJklMz_M"
+};
+
+
+webpush.setVapidDetails(    
+    vapidKeys.subject,
+     vapidKeys.publicKey,
+     vapidKeys.privateKey
+);
+
+
+const enviarPush = async (req, res) => {
+        
+  const allSubscriptions = await User.distinct('tokenPush')
+          console.log(allSubscriptions)
+           res.json(allSubscriptions)
+
+
+  console.log('Total subscriptions', allSubscriptions.length);
+
+  const notificationPayload = {
+      "notification": {
+          "title": "Angular News",
+          "body": "Newsletter Available!",
+          "icon": "assets/main-page-logo-small-hat.png",
+          "vibrate": [100, 50, 100],
+          "data": {
+              "dateOfArrival": Date.now(),
+              "primaryKey": 1
+          },
+          "actions": [{
+              "action": "explore",
+              "title": "Go to the site"
+          }]
+      }
+  };
+
+  Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
+      sub, JSON.stringify(notificationPayload) )))
+      .then(() => 
+      // res.status(200).json({message: 'Newsletter sent successfully.'})     
+      console.log('salio')
+      )
+      .catch(err => {
+          // console.error("Error sending notification, reason: ", err);
+          // res.sendStatus(500);
+          console.log('salio')
+      });
+    }
+    router.route('/enviar').post(enviarPush);
+
+    
+// enviar PUSH
+
 // guardar TOKEN PUSH
 
 router.put('/guardar/:_id', async (req,res) => {
