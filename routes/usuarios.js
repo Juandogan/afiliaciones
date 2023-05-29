@@ -14,8 +14,8 @@ const multiPartMiddleware = multipart({
   uploadDir: './subidas'   //carpeta fisica se debe crear para que funcione
 });
 
-app.use('/upload', express.static(path.resolve('./subidas')))
-app.post('/upload', multiPartMiddleware, (req, res) => {
+router.use('/upload', express.static(path.resolve('../subidas')))
+router.post('/upload', multiPartMiddleware, (req, res) => {
     var link = req.files['upload'].path  //ojo con archivos!
     console.log(link)
 
