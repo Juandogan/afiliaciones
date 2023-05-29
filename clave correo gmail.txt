@@ -1,1 +1,13 @@
 zkdfodnqvtiijvzx
+
+
+{"publicKey":"BMiSLRLCfg7i7-uO0AJ7IZwN0BJi5ow5I3qvBrfJg7pAR_FohLmJV-Jv5aEAzRPRabYVM70yDW63uAFAuyQdaTY","privateKey":"U_tDWAh1rXIFO0-uAq2tkIWWTconSSOIeLmFJklMz_M"}
+
+{
+    "endpoint": "https://fcm.googleapis.com/fcm/send/d2clykHVgxQ:APA91bFnOhUcmCBUotuHtx1ZDMRRA7jSgPXgixQBWGhf4R5NxRXVv8RaCAjb07lP6qjF8_8hhuJRllKirYSF38xyPWeB6NqD1Lq5MZyQUJfPK-sP0fw1pEA2GkSmZu_JFUo1y2rF9A2T",
+    "expirationTime": null,
+    "keys": {
+        "p256dh": "BDluRQgjZQqbijUedWlbeMnUSPRwtpBJtA1yzPXWx3g8nu7Wum_yr6NYL0SYNBSoMqTYEHO2OUZ2LZCX2ytjJdc",
+        "auth": "R5Ujj1XbO2gQjKJJAXplyw"
+    }
+}
