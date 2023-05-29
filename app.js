@@ -7,7 +7,7 @@ var express = require('express');
 const User = require('./models/userModel')
 var app = express();
 
-const multipart = require('connect-multiparty');
+
    
 
 //MIDDLEWARE
@@ -51,22 +51,6 @@ app.use('/feva', require('./routes/usuarios'))
 //       return res
 //     });
 // };  
-
-const multiPartMiddleware = multipart({
-    uploadDir: './subidas'   //carpeta fisica se debe crear para que funcione
-  });
-  
-  app.use('/upload', express.static(path.resolve('./subidas')))
-  app.post('/upload', multiPartMiddleware, (req, res) => {
-      var link = req.files['archivos'].path  //ojo con archivos!
-      console.log(link)
-  
-      var url = 'http://localhost:4001/upload/' + link.slice(8)
-      console.log({ 'url': url })
-      res.json({ 'url': url }); //devuelvo el link para guardar en la base de datos. 
-  
-    });
-  
 
  
 

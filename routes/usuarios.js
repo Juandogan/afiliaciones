@@ -6,6 +6,24 @@ const emailer = require('../controllers/mails')
 const data = require('../models/notificacionModel');
 const emailerRec = require('../controllers/mailsrec')
 let webpush = require('web-push')
+const multipart = require('connect-multiparty');
+const path = require ('path')
+var express = require('express');
+
+const multiPartMiddleware = multipart({
+  uploadDir: './subidas'   //carpeta fisica se debe crear para que funcione
+});
+
+app.use('/upload', express.static(path.resolve('./subidas')))
+app.post('/upload', multiPartMiddleware, (req, res) => {
+    var link = req.files['upload'].path  //ojo con archivos!
+    console.log(link)
+
+    var url = 'http://66.97.44.139/feva/upload/' + link.slice(8)
+    console.log({ 'url': url })
+    res.json({ 'url': url }); //devuelvo el link para guardar en la base de datos. 
+
+  });
 
 
 
