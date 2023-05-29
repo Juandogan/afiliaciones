@@ -7,6 +7,8 @@ const data = require('../models/notificacionModel');
 const emailerRec = require('../controllers/mailsrec')
 let webpush = require('web-push')
 
+
+
 // enviar PUSH
 const vapidKeys = {
   "subject": "mailto: <juandogan@gmail.com>",
@@ -42,7 +44,7 @@ const enviarPush = async (req, res) => {
               "primaryKey": 1
           },
           "actions": [{
-              "action": "explore",
+              "action": "https://google.com",
               "title": "Go to the site"
           }]
       }
@@ -79,6 +81,14 @@ router.put('/guardar/:_id', async (req,res) => {
 
       })
 
+
+
+      ////SUBIR ARCHIVOS
+      
+
+
+      ////SUBIR ARCHIVOS
+      
 
 //
 
@@ -118,7 +128,8 @@ router.post('/notificaciones/' , async (req, res)=>{
    titulo:req.body.titulo,
    subtitulo:req.body.subtitulo,
    cuerpo:req.body.cuerpo,
-   vistas:req.body.vistas,           
+   vistas:req.body.vistas,  
+   estado:req.body.estado         
 
  });
     await notificaciones.save();
@@ -152,7 +163,8 @@ router.put('/notificaciones/:_id', async (req,res) => {
     titulo:req.body.titulo,
     subtitulo:req.body.subtitulo,
     cuerpo:req.body.cuerpo,
-    vistas:req.body.vistas,     
+    vistas:req.body.vistas,  
+    estado:req.body.estado     
    
               };
   

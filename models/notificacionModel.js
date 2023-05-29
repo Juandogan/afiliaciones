@@ -6,7 +6,8 @@ const notificacionesSchema = new Schema({
     titulo: String,        
     subtitulo:String,
     cuerpo:String,
-    vistas:Number    
+    vistas:Number,
+    estado:String    
 },
 {timestamps: true}
 )

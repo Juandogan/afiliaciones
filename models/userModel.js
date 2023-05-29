@@ -7,6 +7,7 @@ const userSchema = new Schema({
     password: String,        
     verificada:String,
     role:String,
+    estado:String,
     tokenPush:{}    
 },
 {timestamps: true}
