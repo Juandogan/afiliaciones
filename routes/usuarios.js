@@ -42,7 +42,7 @@ webpush.setVapidDetails(
 );
 
 
-const enviarPush = async (req, res) => {
+const enviarPush = async (req, res, payload) => {
         
   const allSubscriptions = await User.distinct('tokenPush')
           console.log(allSubscriptions)
@@ -51,23 +51,17 @@ const enviarPush = async (req, res) => {
 
   console.log('Total subscriptions', allSubscriptions.length);
 
-  const notificationPayload = {
-      "notification": {
-          "title": "Angular News",
-          "body": "Newsletter Available!",
-          "icon": "assets/main-page-logo-small-hat.png",
-          "vibrate": [100, 50, 100],
-          "data": {
-              "dateOfArrival": Date.now(),
-              "primaryKey": 1
-          },
-          "actions": [{
-              "action": "https://google.com",
-              "title": "Go to the site"
-          }]
-      }
-  };
+  // const notificationPayload = {
+  //     "notification": {
+  //         "title": "Angular News",
+  //         "body": "Newsletter Available!",
+  //         "icon": "assets/main-page-logo-small-hat.png",
+  //         "vibrate": [100, 50, 100],           
+  //     }
+  // };
 
+    const notificationPayload = req.body
+    console.log("**",notificationPayload)
   Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
       sub, JSON.stringify(notificationPayload) )))
       .then(() => 
@@ -77,7 +71,7 @@ const enviarPush = async (req, res) => {
       .catch(err => {
           // console.error("Error sending notification, reason: ", err);
           // res.sendStatus(500);
-          console.log('salio')
+          console.log('error', err)
       });
     }
     router.route('/enviar').post(enviarPush);
@@ -95,7 +89,7 @@ router.put('/guardar/:_id', async (req,res) => {
 
             };                
        await User.findByIdAndUpdate(_id, {$set: articulo}, {new: true});
-       res.json('Articulo Creado!');
+       res.json('TokenPush Agregado');
 
       })
 
@@ -136,22 +130,20 @@ console.log(req.params._id)
 }); 
 
 router.put('/recuperar/:_id' , async(req,res) => { 
-  try { 
+
       const { _id } = req.params;
       const notificacion = {         
         nombre:req.body.nombre,
         email:req.body.email,
         password:req.body.password,
         verificada:req.body.verificada,
+        estado:req.body.estado,
         tokenPush:req.body.tokenPush,              
                   };
-      
-         await data.findByIdAndUpdate(_id, {$set: notificacion}, {new: true});
-         res.json('Articulo modificado!');
-                 
-    } catch (err) {
-   return res.status(400).send('Error de conexion');
-    }   
+       await User.findByIdAndUpdate(_id, {$set: notificacion}, {new: true});
+       console.log(res)
+         res.json('Articulo modificado!');             
+ 
 
 }); 
 
