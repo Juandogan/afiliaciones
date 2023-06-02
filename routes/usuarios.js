@@ -42,40 +42,29 @@ webpush.setVapidDetails(
 );
 
 
-const enviarPush = async (req, res, payload) => {
-        
-  const allSubscriptions = await User.distinct('tokenPush')
-          console.log(allSubscriptions)
-           res.json(allSubscriptions)
+const enviarPush = async (req, res) => {
+  try {
+    const allSubscriptions = await User.find({ tokenPush: { $exists: true, $ne: '' } }, { tokenPush: 1, _id: 0 });
+    console.log('**', allSubscriptions);
+    res.json(allSubscriptions);
 
+    console.log('Total subscriptions', allSubscriptions.length);
 
-  console.log('Total subscriptions', allSubscriptions.length);
+    const notificationPayload = req.body;
 
-  // const notificationPayload = {
-  //     "notification": {
-  //         "title": "Angular News",
-  //         "body": "Newsletter Available!",
-  //         "icon": "assets/main-page-logo-small-hat.png",
-  //         "vibrate": [100, 50, 100],           
-  //     }
-  // };
+    const notificationPromises = allSubscriptions.map((subscription) =>
+      webpush.sendNotification(subscription.tokenPush, JSON.stringify(notificationPayload))
+    );
 
-    const notificationPayload = req.body
-    console.log("**",notificationPayload)
-  Promise.all(allSubscriptions.map(sub => webpush.sendNotification(
-      sub, JSON.stringify(notificationPayload) )))
-      .then(() => 
-      // res.status(200).json({message: 'Newsletter sent successfully.'})     
-      console.log('salio')
-      )
-      .catch(err => {
-          // console.error("Error sending notification, reason: ", err);
-          // res.sendStatus(500);
-          console.log('error', err)
-      });
-    }
-    router.route('/enviar').post(enviarPush);
+    await Promise.all(notificationPromises);
+    console.log('salio');
+  } catch (err) {
+    console.log('error', err);
+    // Maneja el error adecuadamente
+  }
+};
 
+router.route('/enviar').post(enviarPush);
     
 // enviar PUSH
 
