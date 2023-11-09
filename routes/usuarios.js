@@ -127,6 +127,7 @@ router.put('/recuperar/:_id' , async(req,res) => {
         password:req.body.password,
         verificada:req.body.verificada,
         estado:req.body.estado,
+        dni:req.body.dni,
         tokenPush:req.body.tokenPush,              
                   };
        await User.findByIdAndUpdate(_id, {$set: notificacion}, {new: true});
@@ -227,7 +228,7 @@ router.delete('/usuarios/:_id', async (req,res) => {
 
 
 router.post('/usuarios/signup' , async (req, res)=>{    
- const { email, password, role, nombre } = req.body
+ const { email, password, role, nombre, dni } = req.body
 
   const checkUser = await User.findOne({email})
 
@@ -235,7 +236,7 @@ router.post('/usuarios/signup' , async (req, res)=>{
   return res.status(400).send('Usuario ya existe');
  }
 
- const newUser = new User({ email, password, role, nombre }) 
+ const newUser = new User({ email, password, role, nombre, dni }) 
   await newUser.save() 
   const token = jwt.sign({_id: newUser._id, role: newUser.role}, 'secretKey' )
    res.status(200).json({token})
