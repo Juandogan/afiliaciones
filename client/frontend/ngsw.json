@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1699568175495,
+  "timestamp": 1700431636437,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.933828b35ac0e594.js",
+        "/main.91b0722823998601.js",
         "/manifest.webmanifest",
         "/polyfills.1a4a779d95e3f377.js",
         "/runtime.1eef65174679b3b8.js",
@@ -105,8 +105,8 @@
     "/assets/voley.jfif": "bcd360bb5b781f47eeeec1b0c6e972bdbeca0a41",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/fondogrande.c0a43039f981baa5.png": "7a3bae620136659b10d4f7fbffa698f8ae03beec",
-    "/index.html": "15a7754d85f01118e9e70ff004a04e6b0ce917c6",
-    "/main.933828b35ac0e594.js": "18c1549e552525ce70b001433afa870c8c731758",
+    "/index.html": "020507f7491b8ad9f1609fee87ad30de0d2fe225",
+    "/main.91b0722823998601.js": "4a05ac84efbeec47a784407d163e19e6782516a0",
     "/manifest.webmanifest": "63b272452f7323ec09705c84044faa394ce82a79",
     "/noto.fe02d5bfcb6707c9.png": "42914e3d66ad22d1bbf77826e05e93fd6db825bc",
     "/polyfills.1a4a779d95e3f377.js": "47efbfddf5005a9847f02b21016418121dc97751",
