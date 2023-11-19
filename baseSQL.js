@@ -3,9 +3,10 @@ var mysql = require('mysql')
 
 //conexcion SQL
 var conexion = mysql.createConnection({
-    host:'127.0.0.1',
-    database:'fevaData',
-    user:'root',
+    host:'159.65.226.14',
+    database:'sistemaf_feva',
+    password:'UNdianuevo.12',
+    user:'afiliaciones',
     port:'3306',
     
 

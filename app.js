@@ -1,6 +1,7 @@
 'use stritc'
 const cors = require('cors')
 const bodyParser = require ('body-parser');
+const { conexion } = require('./baseSQL'); //mongodb
 const { mongoose } = require('./baseMongo'); //mongodb
 
 var express = require('express');
@@ -53,6 +54,9 @@ app.use('/feva', require('./routes/usuarios'))
 // };  
 
  
+app.use('/sql', require('./routes/crudSql'))
+
+
 
 app.get('*', function(req, res, next){res.sendFile(path.resolve('client/frontend/index.html'))}); 
 const { application } = require('express');
@@ -63,7 +67,7 @@ console.log('Servidor corriendo ', port);});
  
 
 
-// app.use('/sql', require('./routes/crudSql'))
+
 // app.use('/data', require('./routes/crudMongo'))
 
  

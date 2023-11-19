@@ -3,10 +3,11 @@ const conexion = require('../baseSQL')
 
 //GET A TODOS LOS JUGADORES
 router.get('/', (req,res)=>{
-    let sql = 'select * from juagadores'
+    let sql = 'SELECT * FROM `jugador` LIMIT 10'
     conexion.query(sql,(err,rows, fields)=>{
     if(err) throw err;
-    else{res.json(rows)}
+
+    else{console.log(rows); res.json(rows)}
     })
 });
 
