@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1700437919064,
+  "timestamp": 1701121482477,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.0d6df07f4de9e5fc.js",
+        "/main.f49849b20c2e8e92.js",
         "/manifest.webmanifest",
         "/polyfills.1a4a779d95e3f377.js",
         "/runtime.1eef65174679b3b8.js",
@@ -113,8 +113,8 @@
     "/assets/voleymina.png": "afb52fd10762caab9c78f0ce7367963504d227c0",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/fondogrande.c0a43039f981baa5.png": "7a3bae620136659b10d4f7fbffa698f8ae03beec",
-    "/index.html": "dc1c271de6b63df4072f1f33131a81123f84773c",
-    "/main.0d6df07f4de9e5fc.js": "bef7a6e63209d6b78f60a4dad385669c4c16a6f2",
+    "/index.html": "e7b6044111c8ac7112e4f2efc0839ea461d284e9",
+    "/main.f49849b20c2e8e92.js": "f6bad4b2a8ba25a20fb4f2b4cfbef57637f7a339",
     "/manifest.webmanifest": "63b272452f7323ec09705c84044faa394ce82a79",
     "/noto.5ca47c9f0e4da90b.png": "525eb0b4847ecb526af9957d41d1aa278f1cc93a",
     "/polyfills.1a4a779d95e3f377.js": "47efbfddf5005a9847f02b21016418121dc97751",

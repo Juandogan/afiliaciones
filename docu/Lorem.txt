@@ -1,0 +1,88 @@
+dominio CCAM
+https://42.ip-178-103-190.us.ipxon.net:2222/
+User: nati2009
+Pass: 58dRD7zgF
+
+
+168.181.187.131
+X5HKqtgCbgCJ
+
+
+//instal mongo local
+apt install aptitude 
+
+https://github.com/Juandogan/nm.git
+
+
+Centro Cultural
+root
+jJ9HLp5xG7Gc
+
+La ip del servidor FTP es la siguiente: 190.103.178.42
+User: nati2009
+Clave: 58dRD7zgF
+
+…or create a new repository on the command line
+echo "# CCAM" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Juandogan/CCAM.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/Juandogan/CCAM.git
+git branch -M main
+git push -u origin main
+
+en raiz
+cp -RT /home/img/ /home/CCAM_PROD/subidas/
+
+jahmAguirre
+
+---- Servidor install  nginx --- 
+sudo apt update
+restart!
+sudo apt install nginx
+
+npm install pm2 -g
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+
+server_name {
+listen 80;
+
+location / {
+root /home/CCAM/client;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header Host $http_host;
+proxy_set_header X-NginX-Proxy true;
+proxy_pass http://127.0.0.1:3000; #Aquí la magia
+proxy_redirect off;
+}
+}
+
+systemctl restart nginx
+
+
+CERRANDO PUERTO POR PID
+[root@vps-2402670-x /home/CCAM_PROD] # sudo netstat -tupln
+Conexiones activas de Internet (solo servidores)
+Proto  Recib Enviad Dirección local         Dirección remota       Estado       PID/Program name
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               ESCUCHAR    3154/nginx: master
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               ESCUCHAR    638/systemd-resolve
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               ESCUCHAR    21320/sshd
+tcp        0      0 0.0.0.0:25              0.0.0.0:*               ESCUCHAR    1037/master
+tcp        0      0 0.0.0.0:5347            0.0.0.0:*               ESCUCHAR    21320/sshd
+tcp6       0      0 :::22                   :::*                    ESCUCHAR    21320/sshd
+tcp6      12      0 :::3000                 :::*                    ESCUCHAR    20926/node
+tcp6       0      0 :::25                   :::*                    ESCUCHAR    1037/master
+tcp6       0      0 :::5347                 :::*                    ESCUCHAR    21320/sshd
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           638/systemd-resolve
+udp        0      0 168.197.50.191:68       0.0.0.0:*                           505/systemd-network
+udp        0      0 0.0.0.0:161             0.0.0.0:*                           670/snmpd
+MATA EL PUERTO -   kill -9 20926  // y numer de pid
+ font-size: calc([tamaño minimo] + ([tamaño maximo] - [tamaño minimo]) * ((100vw - [tamaño minimo de pantalla]) / ([tamaño maximo de pantalla] - [tamaño minimo de pantalla])));
+} 
